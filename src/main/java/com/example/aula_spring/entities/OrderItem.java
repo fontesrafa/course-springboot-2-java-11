@@ -31,7 +31,6 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
-    @JsonIgnore
     public Order getOrder() {
         return id.getOrder();
     }
@@ -40,6 +39,7 @@ public class OrderItem implements Serializable {
         id.setOrder(order);
     }
 
+    @JsonIgnore
     public Product getProduct() {
         return id.getProduct();
     }
@@ -66,8 +66,10 @@ public class OrderItem implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof OrderItem)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof OrderItem))
+            return false;
         OrderItem orderItem = (OrderItem) o;
         return Objects.equals(id, orderItem.id);
     }
