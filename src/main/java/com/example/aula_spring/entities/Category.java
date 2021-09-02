@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
@@ -25,6 +24,7 @@ public class Category implements Serializable {
 
     public Category() {
     }
+
     public Category(Long id, String name) {
         super();
         this.id = id;
@@ -47,14 +47,16 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public Set<Product> getProducts() {
+        return products;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Category)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof Category))
+            return false;
         Category category = (Category) o;
         return Objects.equals(getId(), category.getId());
     }
@@ -63,6 +65,4 @@ public class Category implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
-
-
 }
